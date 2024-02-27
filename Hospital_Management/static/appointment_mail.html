@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Confirmation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #246bad;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #hospital-logo {
+            width: 100px;
+            height: auto;
+            margin-top: 10px;
+        }
+
+        #appointment-details {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #246bad;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        p {
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        .confirmation-text {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            color: #777;
+            margin-top: 20px;
+        }
+
+        .Appointment_Guide {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+        text-align: justify;
+    }
+
+    .Appointment_Guide strong {
+        color: #246bad;
+    }
+
+    .Appointment_Guide em {
+        font-style: italic;
+    }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>ZenCare Health Center</h1>
+        <img src="logo.png" alt="Hospital Logo" id="hospital-logo">
+    </header>
+
+    <div id="appointment-details">
+        <h2>Appointment Confirmation</h2>
+
+        <label for="patientName">Patient Name:</label>
+        <p id="patientName">{{ patient_data.Full_Name}}</p>
+
+        <label for="doctorName">Doctor's Name:</label>
+        <p id="doctorName">Dr. {{patient_data.appointed_doc.doc_name}}</p>
+
+        <label for="doctorCategory">Doctor's Category:</label>
+        <p id="doctorCategory">{{patient_data.appointed_doc.doc_catagory}}</p>
+
+        <label for="Appointment_date_time">Appointment Date and Time:</label>
+        <p id="Appointment_date_time"> {{appointmentDateTime}} </p>
+
+        <p class="confirmation-text">Your appointment has been confirmed!</p>
+        <p class="">Your Patient id(PID) is : <strong><i>{{patient_data.pid}}</i></strong></p>
+
+        <p class="Appointment_Guide">
+            <strong>Appointment Guidelines:</strong><br>
+            <br>
+            <em>Please arrive 15 minutes before your scheduled appointment time.</em> If, for any reason, you need to reschedule
+            or cancel your appointment, please contact us at least 24 hours in advance.<br>
+            <br>
+            If you have any specific medical records or test results, please bring them with you to the appointment.<br>
+            <br>
+            We strive to provide exceptional care and ensure your comfort during your visit. If you have any special
+            requirements or questions, feel free to reach out to us.<br>
+            <br>
+            <strong>Thank you for choosing ZenCare Health Center. We look forward to serving you and meeting your healthcare needs.</strong>
+        </p>
+
+
+    </div>
+
+    <div class="footer">
+        <p>Harmony in Healing, Care in Every Breath: ZenCare Health Center</p>
+    </div>
+
+</body>
+
+</html>

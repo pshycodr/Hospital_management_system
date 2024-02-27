@@ -1,0 +1,143 @@
+
+{% extends "nav.html" %}
+
+{% block title %}Medical Record of {{pres_data.patient_name}} {% endblock  %}
+
+{% block style %}
+
+    .wrapper {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        background-color: #fff;
+        border-radius: 8px;
+        margin: 15px auto;
+        padding: 0;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 900px;
+    }
+
+    h1 {
+        color: #3498db;
+        text-align: center;
+    }
+
+    h2 {
+        color: #333;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+        margin-top: 20px;
+    }
+
+    .p {
+        color: #555;
+        margin: 10px 0;
+    }
+
+    table {
+        width: 100%;
+        margin-top: 10px;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #3498db;
+        color: #fff;
+    }
+
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .p_d_wrap{
+        display: flex;
+        justify-content: space-around;
+    }
+
+{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+    <div class="container">
+
+        <h1>Medical Record</h1>
+    <div class="p_d_wrap">
+        <div class="patient-info">
+            <h2>Patient Information</h2>
+            <p class="p"><strong>Patient ID:</strong> {{pres_data.patients_info.pid}}</p>
+            <p class="p"><strong>Name:</strong> {{pres_data.patients_info.Full_Name}}</p>
+            <p class="p"><strong>Advice Time: </strong>{{pres_data.prescription_data.advice_time}} </p>
+        </div>
+
+        <div class="doctor-info">
+            <h2>Doctor Information</h2>
+            <p class="p"><strong>Doctor ID:</strong> {{pres_data.patients_info.appointed_doc.doc_id}}</p>
+            <p class="p"><strong>Name: </strong> {{pres_data.patients_info.appointed_doc.doc_name}}</p>
+        </div>
+    </div>
+
+        <div class="medicines">
+            <h2>Medicines Prescribed</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Medicine ID</th>
+                        <th>Medicine Name</th>
+                        <th>Quantity</th>
+                        <th>Morning</th>
+                        <th>Afternoon</th>
+                        <th>Night</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for med in pres_data.prescription_data.medicines_prescribed %}
+                    <tr>
+                        <td>{{med.med_id}}</td>
+                        <td>{{med.med_name}}</td>
+                        <td>{{med.quantity}}</td>
+                        <td>{{med.morning}}</td>
+                        <td>{{med.afternoon}}</td>
+                        <td>{{med.night}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tests">
+            <h2>Test Advices</h2>
+            <table>
+                
+                <tr>
+                    <th>Test Id</th>
+                    <th>Test Name</th>
+                </tr>
+                {% for test in pres_data.prescription_data.test_advices %}
+                <tr>
+                    <td>{{test.test_id}}</td>
+                    <td>{{test.test_name}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    </div>
+</div>
+{% endblock  %}

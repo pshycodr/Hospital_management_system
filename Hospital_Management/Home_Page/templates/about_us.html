@@ -1,0 +1,154 @@
+{% extends "nav.html" %}
+
+{% block title %}Who we are ?{% endblock  %}
+
+{% block style %}
+
+        .header {
+            background-color: #246bad;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .header > p {
+            color: #bbe1fa;
+            font-style: italic;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .container > img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li::before {
+            content: '\2022';
+            color: #246bad;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        footer {
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        footer p {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin: 0;
+        }
+
+        .contact {
+            margin-top: 2rem;
+        }
+
+        .contact h3 {
+            color: #246bad;
+        }
+
+        .contact p {
+            margin-bottom: 0.5rem;
+        }
+
+       .contact >p> a {
+        color: #3697ff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .contact >p> a :hover {
+        text-decoration: underline;
+        color: rgba(250, 82, 82, 0.843);
+    }
+    
+{% endblock  %}
+
+    {% block content%} 
+    
+
+    <header class= "header">
+        <h1>ZenCare Health Center</h1>
+        <p>"Harmony in Healing, Care in Every Breath"</p>
+    </header>
+
+    <div class="container">
+        <img src="https://source.unsplash.com/random/1600x600?hospital " alt="Hospital Image">
+        <h2>Welcome to ZenCare Health Center</h2>
+        <p>
+            At ZenCare Health Center, we are dedicated to providing exceptional healthcare services with a focus on your
+            well-being. Our compassionate team of professionals is here to ensure you receive personalized care in a
+            comfortable environment.
+        </p>
+
+        <h2>Our Mission</h2>
+        <p>
+            Our mission is to enhance the health and well-being of our community by delivering outstanding healthcare
+            services. We aim to be a trusted healthcare partner, emphasizing patient-centric care and promoting a
+            healthy lifestyle.
+        </p>
+
+        <h2>Why Choose ZenCare Health Center?</h2>
+        <ul>
+            <li>Experienced and Caring Professionals</li>
+            <li>State-of-the-Art Facilities</li>
+            <li>Personalized and Comprehensive Healthcare</li>
+            <li>Commitment to Excellence</li>
+            <li>Patient-Focused Approach</li>
+        </ul>
+    </div>
+
+    <div class="container contact">
+        <h3>Contact Us</h3>
+        <p>If you have any questions or would like to schedule an appointment, feel free to reach out to us.</p>
+        <p>Email: <a href="mailto:info@zencarehospital.com">info@zencarehospital.com</a></p>
+        <p>Phone: <a href="tel:+911800800800">1800 800 800</a></p>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 ZenCare Health Center | "Harmony in Healing, Care in Every Breath"</p>
+    </footer>
+
+    {% endblock  %}
+

@@ -1,0 +1,192 @@
+{% extends "nav.html" %}
+
+{% block title %}Read full blog{% endblock  %}
+
+{% block style %}
+
+
+
+.blog-post {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.full-post {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.post-title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-family: "Kalnia", serif;
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+.post-author,
+.post-date {
+    font-size: 0.8em;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.post-text {
+    font-size: 1em;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    line-height: 1.6;
+    color: #555;
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: transform 0.5s ease;
+
+}
+
+
+.post-text:hover {
+    transform: scale(1.02);
+}
+
+.author_info {
+    text-align: center;
+}
+
+/* Animation Styles */
+.blog-post {
+    position: relative;
+    overflow: hidden;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideIn 0.8s ease-out forwards;
+}
+
+@keyframes slideIn {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+
+.post-title::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 30%;
+    background-color: #4285f4;
+    margin: 10px auto;
+}
+
+.post-text::first-letter {
+    font-size: 1.5em;
+    color: #4285f4;
+    float: left;
+    margin-right: 5px;
+}
+
+.post-text a {
+    color: #4285f4;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.post-text a:hover {
+    color: #3367d6;
+}
+
+a.back-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4285f4;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 20px;
+    transition: background-color 0.3s ease;
+}
+
+a.back-link:hover {
+    background-color: #3367d6;
+}
+
+
+
+.h_and_img{
+    display: flex;
+    justify-content: space-around;
+    width: 1200px;
+}
+
+.h_and_img > img{
+    width: 500px;
+    border-radius: 10px;    
+}
+
+.author_info{
+    align-self: center;
+}
+
+
+
+{% endblock %}
+
+{% block content %}
+
+
+
+    
+    <article class="full-post">
+        
+        <div class="h_and_img">
+            
+            <img src="https://source.unsplash.com/random/1600x900?doctor" alt="Doctor">
+            
+            <div class="author_info">
+                
+                <h2 class="post-title">
+                    
+                    {{ blog_data.blog_title }}
+                    
+                </h2>
+                
+                <p class="post-author">By Dr. {{ blog_data.publisher }} </p>
+                
+                <p class="post-date">Published on: {{ blog_data.date_time }}</p>
+
+                {% if blog_data.last_edit %}
+                <p class="post-date">Last updated: {{ blog_data.last_edit }}</p>
+                {% endif %}
+                
+            </div>
+        </div>
+        
+        <main class="blog-post">
+        <div class="post-content">
+            
+            <p class="post-text">
+                
+                {{ blog_data.blog_content|safe}}
+                
+                </p>
+                
+            </div>
+
+            
+            <a href="/blog/all-blogs/" class="back-link"> &#8592; Go back </a>   
+        </main>
+    </article>
+        
+{% endblock %}

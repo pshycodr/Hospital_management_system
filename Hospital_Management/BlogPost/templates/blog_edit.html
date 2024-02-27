@@ -1,0 +1,136 @@
+
+{% extends "nav.html" %}
+
+{% block title %}Blogs By Doctors{% endblock  %}
+
+{% block style %}
+
+
+
+    .body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .blog_edit_container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 1000px; 
+        height: 640px;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .blog_edit_container form h2 {
+        text-align: center;
+        color: #333333;
+    }
+
+    .group_1 {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        
+    }
+
+    label {
+        color: #555555;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    textarea{
+        height: 300px;
+    }
+
+    .group_1 label,
+    .group_1 input {
+        flex: 1;
+    }
+
+    button {
+        background-color: #3498db;
+        color: #ffffff;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #2980b9;
+    }
+
+    .message {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .message > a {
+        color: #3498db;
+        text-decoration: none;
+        padding: 15px;
+        border: 2px solid #3498db;
+        border-radius: 4px;
+
+    }
+
+    .message >a:hover {
+        color : black;
+        border: 2px solid black;
+        background-color: #ff7474;
+    }
+
+    .group_2{
+        display: flex;
+        justify-content: center;
+        gap: 200px;
+    }
+
+
+
+{% endblock %}
+{% block content %}
+<div class= "body">
+    <div class="blog_edit_container">
+        <form action="" method="post" class="form">
+            {% csrf_token %}
+            <h2>Edit Blog Post</h2>
+
+            <div class="group_1">
+
+            <label for="title">Title:
+            <input type="text" id="title" name="title" value=" {{ blog_data.blog_title }}" required>
+            </label>
+
+            </div>
+            
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" rows="8" required> {{ blog_data.blog_content|safe}} </textarea>
+            
+            <div class="group_2">
+            <button type="submit">Save Changes</button>
+            <p class="message"><a href="/blog/doc-up-blog/?doc_id={{ blog_data.doc_id }}">Cancel</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

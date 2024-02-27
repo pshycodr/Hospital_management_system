@@ -1,0 +1,53 @@
+{% extends "nav.html" %}
+
+{% block title %} Doctor Dashbord{% endblock %}
+
+{% block style %}
+.dashboard {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-title {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.dashboard-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #3498db;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.dashboard-button:hover {
+    background-color: #2980b9;
+}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="dashboard">
+    <h1 class="dashboard-title">Doctor Dashboard</h1>
+    <div class="button-container">
+        <button class="dashboard-button"> <a href="/doctor/patient-appointmentReq/?doc_id={{doc_id}}" class="dashboard-button">Appointments </a></button>
+        <button class="dashboard-button"><a href="/doctor/patients-info/?doc_id={{doc_id}}">Reports and Prescription</a></button>
+        <button class="dashboard-button">  <a href="/blog/doc-up-blog?doc_id={{doc_id}}" class="dashboard-button">Your Blogs</a></button>
+    </div>
+</div>
+{% endblock %}

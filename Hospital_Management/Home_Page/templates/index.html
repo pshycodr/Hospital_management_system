@@ -1,0 +1,519 @@
+
+{% extends "nav.html" %}
+
+{% block title %}Home Page{% endblock  %}
+
+{% block style %}
+
+    
+    .corousel_container{
+
+        width: 100%;
+        height: 550px;
+    }
+
+
+    .corousel_img > img {
+        width: 100%;
+        height: 550px;
+        position: absolute;
+        z-index: -1;
+    }
+
+    .corusel_textbox{
+        background: linear-gradient( to right, white, transparent);
+        height: 100%;
+        width: 1000px;
+        padding: 15px 150px;
+
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .corusel_heading{
+        height: 150px;
+        width: 400px;
+        padding-top: 70px;
+        margin-bottom : 50px;
+        opacity: 0;
+        animation: slideIn 0.8s ease-out forwards;
+        transform: translateX(-50px);
+    }
+    
+    @keyframes slideIn {
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    .corusel_heading > p{
+        font-size: 45px;
+        font-family: 'Noto Sans', sans-serif;
+        font-weight: bold;
+        color: #00257a;
+    }
+
+    .corusel_textbox > .corusel_text{
+        width: 400px;
+        font-family: 'Rubik', sans-serif;       
+        font-size: 13.5px;
+
+        opacity: 0;
+        transform: translateX(-50px);
+        animation: slideIn 1.5s ease-out forwards;
+    }
+    
+    @keyframes slideIn {
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    .corusel_buttons {
+        width: 380px;
+        height: 100px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        transform: translateY(50px);
+        animation: slideIn 1s ease-out forwards;
+    }
+    
+    @keyframes slideIn {
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }    
+
+    .corusel_buttons > .appointment_button{
+        background-color: #246bad;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: white;
+        height: 50px;
+        width: 150px;
+        border-radius: 50px;
+        cursor: pointer;
+
+    }
+
+    .corusel_buttons > .learn_more_button{
+        height: 50px;
+        width: 150px;
+        border-radius: 50px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        background-color: rgba(255, 255, 255, 0.152);
+        color: #011c5d;
+        border: 2px solid #011c5d;
+        cursor: pointer;
+
+    }
+
+    .corusel_buttons > .learn_more_button>a{
+        color : black;
+    }
+
+    .corusel_buttons > .learn_more_button>a:hover{
+        color : white;
+    }
+
+    .corusel_buttons > .learn_more_button:hover{
+        background-color: #195187;
+    }
+
+
+    /***************** ONLINE CONSULTENT *************/
+
+    .online_consult_container {
+        height: 300px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around; 
+        align-items: center;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .online_consult_form > form {
+        display: flex;
+        gap: 80px;
+        width: 100%;
+    }
+
+    .online_consult_form > form > label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .online_consult_form > form > label > input {
+        height: 46px;
+        width: 240px;
+        flex: 1;
+        padding: 10px;
+        background-color: #dfdfdf;
+        border: 1px solid #474747;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .online_consult_form > form > label > input:hover {
+        box-shadow: 0 0 10px #246bad; 
+    }
+
+    .online_consult_form > form > button {
+        background-color: #246bad;
+        width: 200px;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .online_consult_form > form > button:hover {
+        background-color: #195187;
+    }
+
+
+
+    /* ****************** OPENING HOURS INFO ************** */
+
+    .opening_info_container{
+        height: 500px;
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .opening_info_container > .opening_info_img > img{
+        height: 400px;
+    }
+
+    .opening_info_container > .opening_info {
+        display: flex;
+        flex-direction: column;
+        gap : 50px;
+
+    }
+
+    .opening_info_container > .opening_info > .opening_info_heading > p {
+        align-self: center;
+        font-size: 50px;
+        color: #011c5d;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        position: relative;
+        left: 70px;
+    }
+
+
+    .opening_info_container > .opening_info > .opening_info_chart > table {
+        font-size: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse:separate;
+        border-spacing: 80px 25px;
+        text-align: left;
+    }
+
+    .opening_info_container > .opening_info > .opening_info_chart > table tbody tr:hover {
+        background-color: rgba(128, 128, 128, 0.271);
+    }
+
+
+
+    /**************** OUR MEMBERS ***************/
+
+    .members_container {
+        text-align: center;
+        margin: 20px;
+        margin-top: 80px;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .members_container_heading p {
+        font-size: 45px;
+        font-weight: bold;
+        color: #0d467b;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .members_info {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+
+    .nurse_container,
+    .doctor_container,
+    .stafs_container {
+        height: 280px;
+        max-width: 300px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        margin: 10px;
+        background-color: #b9b9b93c;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .doctor_container{
+        background-color:#246bad;
+        color: white;
+
+    }
+
+    .nurse_container>p,
+    .doctor_container>p,
+    .stafs_container>p{
+        font-size: 12px;
+        font-family: 'Headland One', serif;
+    }
+
+    .nurse_container>h2,
+    .doctor_container>h2,
+    .stafs_container> h2{
+        color: #0d467b;
+        font-size: 30px;
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    .nurse_container > button,
+    .doctor_container > button,
+    .stafs_container > button {
+        color: white;
+        height: 40px;
+        background-color: #246bad;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .doctor_container>h2{
+        color: white;
+    }
+
+    .doctor_container > button{
+        background-color: white;
+        color: #011c5d;
+    }
+
+
+
+    /********* Emergency Number **********/
+
+
+    .emergency_num_container{
+        margin-top: 100px;
+        width: 100%;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .emergency_num_container > img{
+        width: 100%;
+        height: 200px;
+        position: absolute;
+        z-index: -1;
+    }
+
+    .emergency_num_container > .emergency_info {
+        height:100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .emergency_num_container > .emergency_info > .emergency_text {
+        color: rgb(233, 184, 93);
+        font-size: 20px;
+    }
+
+    .emergency_num_container > .emergency_info > .emergency_nums{
+        color: white;
+        font-size: 40px;
+    }
+
+{% endblock  %}
+
+{% block content%} 
+
+   
+<div class="corousel_container">
+    {% load static %}
+
+
+    <div class="corousel_img">
+        <img src={% static 'surgery-1822458-01.jpeg' %} alt="" loading="lazy">
+    </div>
+
+    <div class="corusel_textbox">
+        <div class="corusel_heading">
+            <p>
+                Take care your health now
+            </p>
+        </div>
+
+        <div class="corusel_text">
+            <p>
+                The best medical experts ready to solve your health issues. <br/>
+                our team has been focused on building a high quality medical service
+            </p>
+        </div>
+
+        <div class="corusel_buttons">
+            <button class="appointment_button">
+                <a href="/doctor/doc-list/">
+                Book Appointment
+                </a>
+            </button>
+
+            <button class="learn_more_button">
+                <a href="/patient/patient-prescription/">
+                Patient Login
+                </a>
+            </button>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="online_consult_container">
+    <div class="online_consult_form">
+        <form action="" method="post">
+            {% csrf_token %}
+            <label for="patient_name">
+                <input type="text" name="patient_name" id="patient_name" placeholder="Your Name">
+            </label>
+
+            <label for="patient_email">
+                <input type="text" name="patient_email" id="patient_email" placeholder="Your Email">
+            </label>
+
+            <label for="patient_problem">
+                <input type="text" name="patient_problem" id="problem" placeholder="Describe Your Problem">
+            </label>
+
+            <button type="submit">Get Online Consultation</button>
+        </form>
+    </div>
+</div>
+
+
+<div class="opening_info_container">
+
+    <div class="opening_info_img">
+        <img src="{% static 'Picsart_24-02-13_00-35-26-533.jpg' %}" alt="" loading="lazy">
+    </div>
+    <div class="opening_info">
+        <div class="opening_info_heading">
+            <p>
+                Opening Hours
+            </p>
+        </div>
+
+        <div class="opening_info_chart">
+            <table>
+                <tr>
+                    <td>Monday</td>
+                    <td></td>
+                    <td>8am - 11pm</td>
+
+                </tr>
+                <tr>
+                    <td>Tuesday</td>
+                    <td></td>
+                    <td>8am - 11pm</td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td></td>
+                    <td>8am - 11pm</td>
+                </tr>
+                <tr>
+                    <td>Thursday</td>
+                    <td></td>
+                    <td>8am - 11pm</td>
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td></td>
+                    <td>8am - 10pm</td>
+                </tr>
+                <tr>
+                    <td>Sat/Sunday</td>
+                    <td></td>
+                    <td>9am - 10pm</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<div class="members_container">
+    <div class="members_container_heading">
+        <p>
+            Our Members
+        </p>
+    </div>
+
+    <div class="members_info">
+        <div class="nurse_container">
+            <h2>Nursing Team</h2>
+            <p>Our dedicated nursing team provides compassionate care to our patients. They are highly trained professionals who ensure the well-being and comfort of every individual under their care.</p>
+            <button>
+                Meet our Nurses
+            </button>
+        </div>
+
+        <div class="doctor_container">
+            <h2>Medical Doctors</h2>
+            <p>Meet our team of experienced and skilled medical doctors. They are committed to delivering the highest quality medical care and are passionate about improving the health and lives of our patients.</p>
+            <button>
+                <a href="/doctor/doc-list/" style="text-decoration: none; color: inherit;">
+                    Meet our Doctors
+                </a>
+            </button>
+        </div>
+
+        <div class="stafs_container">
+            <h2>Support Staff</h2>
+            <p>Behind the scenes, our support staff plays a vital role in the seamless operation of our healthcare facility. Dedicated to administrative tasks and maintaining a welcoming environment, they ensure a positive experience for all.</p>
+            <button>
+                Meet our Supporting Staffs
+            </button>
+        
+        </div>
+    </div>
+</div>
+
+<div class="emergency_num_container">
+    <div class="emergency_info">
+        <p class="emergency_text">Emergency Service line</p>
+        <p class="emergency_nums">0805 000 0000, 0806 000 0000</p>
+    </div>
+    <img src={% static 'emergency_line.jpg' %} alt="" loading="lazy">
+</div>
+
+{% endblock  %}
+ 
+
+{% comment %} 
+API's:-
+https://source.unsplash.com/random/1600x600?doctors 
+https://source.unsplash.com/random/1600x600?medicine
+https://source.unsplash.com/random/1600x600?treatment
+{% endcomment %}

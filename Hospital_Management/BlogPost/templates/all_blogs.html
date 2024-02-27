@@ -1,0 +1,161 @@
+
+{% extends "nav.html" %}
+
+{% block title %}Blogs By Doctors{% endblock  %}
+
+{% block style %}
+
+
+    .blog_header {
+        background-color: #598cde;
+        color: #fff;
+        text-align: center;
+        padding: 1em 0;
+    }
+
+    .blog_header > h1 {
+        margin: 0;
+        font-size: 1.8em;
+    }
+
+    .blog-cards-outer-container{
+        display: flex;
+        justify-content: center;
+        height: fit-content;
+    }
+
+    .blog-cards-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); 
+        grid-template-rows: repeat(3, 1fr); 
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .card {
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        margin: 20px;
+        width: 400px;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-img img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .card-content {
+        padding: 20px;
+    }
+
+    .card-heading {
+        font-size: 1.5rem;
+        height: 90px;
+        margin-bottom: 10px;
+        color: #333;    
+        font-family: "Lora", serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        line-height: 1.2;
+    }
+
+    .card-author,
+    .card-date {
+        font-size: 0.8rem;
+        color: #777;
+        margin-bottom: 5px;
+    }
+
+    .card-excerpt {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 15px;
+        font-family: "Lora", serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        line-height: 1.3;
+    }
+
+    .read-more-link {
+        text-decoration: none;
+        color: #4285f4;
+        font-weight: bold;
+        transition: color 0.3s ease;
+        display: inline-block;
+    }
+
+    .read-more-link:hover {
+        color: #3367d6;
+    }
+
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+
+    .whole_link{
+        color: black;
+        display: inline;
+    }
+
+{% endblock %}
+{% block content %}
+
+
+
+<div class="blog-cards-outer-container">
+<div class="blog-cards-container">
+    
+    {% for data in blog_data %}
+            <div class="card">
+                <div class="card-img">
+                    <img src="https://source.unsplash.com/random/1600x600?doctor" alt="Doctor" loading="lazy">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-heading">
+                        {{ data.blog_title }}
+                    </h2>
+                  
+                    <p class="card-author">By Dr. {{ data.publisher }}</p>
+                  
+                    <p class="card-date">Published on {{ data.date_time }}</p>
+
+                    {% if data.last_edit %}
+                    <p class="card-date">Last updated: {{ data.last_edit }}</p>
+                    {% endif %}
+                     
+                   <p class="card-excerpt" id="card-excerpt">
+                        {{ data.blog_content|safe }}
+                    </p>  
+                    <a href="/blog/full-blog?blog_key={{data.key}}" id="read-more-link" class="read-more-link">Read more &rarr;</a>
+                </div>
+            </div>
+        {% endfor %}    
+</div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var paragraphs = document.querySelectorAll(".card-excerpt");
+        
+        paragraphs.forEach(function(paragraph) {
+            paragraph.setAttribute("data-full-content", paragraph.innerHTML);
+            paragraph.innerHTML = paragraph.innerHTML.substr(1, 150) + "...";
+        });
+    });
+</script>
+
+{% endblock %}

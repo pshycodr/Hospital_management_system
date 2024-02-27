@@ -1,0 +1,103 @@
+{% extends "nav.html" %}
+
+{% block title %}Doctor | Home{% endblock %}
+
+{% block style %}
+    .card_container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 50px;
+        padding: 20px;
+    }
+
+    .card {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out;
+        width: 320px;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    .card_img {
+        border-radius: 10px 10px 0 0;
+        height: 200px;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    .card_text {
+        padding: 15px;
+    }
+
+    .card_heading {
+        color: #246bad;
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
+
+    .card_disc {
+        color: #555;
+        font-size: 14px;
+    }
+
+    .tag_info {
+        background-color: #246bad;
+        color: #fff;
+        padding: 10px;
+        margin: 0px auto;
+        text-align: center;
+
+    }
+
+    .tag_info a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .tag_info p {
+        margin: 0;
+    }
+
+    .tag_info:hover {
+        background-color: #1a68ee;
+        cursor: pointer;
+    }
+
+    .category{
+       color: #df6c20;
+       font-weight: bolder;
+        
+    }
+{% endblock  %}
+
+{% block content %}
+<main class="card_container">
+    <!-- card start -->
+    {% for d_data in doc_data %}
+    <div class="card">
+        <a href="#" class="card_img_container">
+            <img src="https://source.unsplash.com/random/600x400?doctor" alt="Doctor Image" class="card_img" loading="lazy">
+        </a>
+
+        <div class="card_text">
+            <h2 class="card_heading">Dr. {{ d_data.Basic.full_name }}</h2>
+            <p class="category">{{ d_data.Basic.category}}</p>
+            <p class="card_disc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, architecto.</p>
+        </div>
+
+        <div class="tag_info">
+            <a href="/patient/patient-reg/?d_id={{ d_data.Basic.email }}">
+                <p>Book Appointment</p>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</main>
+{% endblock %}

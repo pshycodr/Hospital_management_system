@@ -1,0 +1,90 @@
+{% extends "nav.html" %}
+
+{% block title %}Doctor Login{% endblock  %}
+
+{% block style %}
+
+    body{
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .login-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        justify-content:space-evenly;
+        width:auto;
+        height: 300px;
+    }
+
+    label {
+        margin-bottom: 8px;
+    }
+
+    #p_username {
+        padding: 8px;
+        margin-bottom: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    #p_password {
+        padding: 8px;
+        margin-bottom: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .button {
+        background-color: #007BFF;
+        color: #fff;
+        padding: 10px;
+        margin:10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .button:hover {
+        background-color: #0056b3;
+    }
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+<div class="login-container">
+    <form action="#" method="post" class="form">
+        {% csrf_token %}
+        <h2>Doctor Login</h2>
+        <label for="username">Doctor id:</label>
+        <input type="text" id="p_username" name="Doc_id" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="p_password" name="password" required>
+
+        <button type="submit" class="button">Login</button>
+    </form>
+</div>
+</div>
+
+{% endblock  %}

@@ -1,0 +1,114 @@
+
+{% extends "nav.html" %}
+
+{% block title %}Blog Upload{% endblock  %}
+
+{% block style %}
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: #3498db;
+        color: #fff;
+        text-align: center;
+        padding: 1em 0;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    input,
+    textarea {
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .blog_submit {
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .blog_submit:hover {
+        background-color: #2980b9;
+    }
+
+{% endblock %}
+
+{% block content%} 
+
+    <header>
+        <h1>Doctor's Blog - <em>Zencare Health Center</em></h1>
+    </header>
+    <main>
+        <section class="form-container">
+            <h2>Upload Your Insights</h2>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="content">Blog Content:</label>
+                <textarea id="content" name="content" rows="8" required></textarea>
+
+                <label for="image">Upload Image:</label>
+                <input type="file" id="image" name="image" accept="image/*">
+
+                <button class="blog_submit" type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        function submitForm() {
+            var form = document.getElementById('blogForm');
+            var formData = new FormData(form);
+    
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/your-upload-endpoint', true);
+    
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    console.log('Image uploaded successfully.');
+                } else {
+                    console.error('Failed to upload image.');
+                }
+            };
+    
+            xhr.send(formData);
+        }
+    </script>
+    
+    <script>
+        window.addEventListener('beforeunload', function(e){
+            var confirmMessage = "Do you want to Exit ?";
+            e.returnValue = confirmMessage;
+        })
+
+    </script>
+{% endblock  %}
+ 

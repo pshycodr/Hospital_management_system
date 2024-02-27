@@ -1,0 +1,172 @@
+{% extends "nav.html" %}
+
+{% block title %}Appointments Requests{% endblock %}
+
+{% block style %}
+    .wrapper {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        width: auto;
+        margin: 20px;
+        background-color: #f5f5f5;
+        color: #333;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+
+    h2 {
+        color: #3498db;
+        text-align: center;
+        font-size: 40px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th,
+    td {
+        border: 1px solid #d4d2d2;
+        padding: 12px;
+        text-align: left;
+    }
+
+    td:hover {
+        background-color: #ecf0f1;
+    }
+
+    th {
+        background-color: #3498db;
+        color: white;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    a:hover {
+        color: red;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .btn-container {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .btn-container button {
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .btn-container button:hover {
+        background-color: #45a049;
+    }
+{% endblock  %}
+
+{% block content %}
+
+<div class="wrapper">
+    <div class="container">
+
+            <h2>Appointments Requests</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>PID</th>
+                        <th>Patient Name</th>
+                        <th>DOB</th>
+                        <th>Blood Group</th>
+                        <th>Problem Description</th>
+                        <th>Last Updated Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p_data in data %}
+                    <tr>
+                        <td>{{p_data.pid}}</td>
+                        <td>{{p_data.Full_Name}}</td>
+                        <td>{{p_data.Date_of_Birth}}</td>
+                        <td>{{p_data.Blood_Group}}</td>
+                        <td>
+                            <div style="height: 100px; width: 400px; overflow: scroll;">
+                                {{p_data.desc_problem}}
+                            </div>
+                        </td>
+                        
+                        <td>
+                            <div class="btn-container">
+                                <button onclick="showInput('{{p_data.pid}}')">Accept</button>
+                                <button onclick="rejectAppointment('{{p_data.pid}}')">Reject</button>
+                            </div>
+                        
+                            <form method="post">
+                                {% csrf_token %}
+                                <div id="inputContainer_{{p_data.pid}}" class="hidden">
+                                    <label for="appointmentDateTime">Appointment Date and Time:</label>
+                                    <input type="datetime-local" id="appointmentDateTime_{{p_data.pid}}" name="appointmentDateTime">
+                        
+                                    <input type="hidden" name="patient_id" value="{{p_data.pid}}">
+                                    <button onclick="acceptAppointment('{{p_data.pid}}')">Submit</button>
+                                    <button type="button" onclick="cancelAppointment('{{p_data.pid}}')">Cancel</button>
+                                </div>
+                            </form>
+                        </td>
+                        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+       
+    </div>
+</div>
+
+<script>
+    function showInput(patientId) {
+        var inputContainer = document.getElementById("inputContainer_" + patientId);
+        inputContainer.classList.remove("hidden");
+    }
+
+    function acceptAppointment(patientId) {
+        var appointmentDateTime = document.getElementById("appointmentDateTime_" + patientId).value;
+
+        alert("Appointment for Patient ID " + patientId + " accepted for " + appointmentDateTime);
+        location.reload();
+    }
+
+    function rejectAppointment(patientId) {
+        alert("Appointment for Patient ID " + patientId + " rejected");
+        location.reload();
+    }
+
+    function cancelAppointment(patientId) {
+        var inputContainer = document.getElementById("inputContainer_" + patientId);
+        inputContainer.classList.add("hidden");
+    }
+    
+</script>
+
+<script>
+    window.addEventListener('beforeunload', function(e){
+        var confirmMessage = "Do you want to Exit ?";
+        e.returnValue = confirmMessage;
+    })
+
+</script>
+
+{% endblock %}

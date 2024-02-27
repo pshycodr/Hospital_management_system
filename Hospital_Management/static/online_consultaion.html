@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation Request Confirmation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #246bad;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .confirmation-text {
+            font-weight: bold;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+        }
+
+        footer {
+            color: #555;
+            margin-top: 20px;
+        }
+
+        .footer-logo {
+            max-width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Consultation Request Confirmation</h1>
+
+        <p>Dear {{patient_name}},</p>
+
+        <p class="confirmation-text">Thank you for submitting your request for an online consultation at ZenCare Health Center. We have received your information regarding your problem "<i><u>{{patient_problem}} </u> </i>", and our team is working diligently to arrange your consultation at the earliest convenience.</p>
+
+        <p class="confirmation-text">You will be contacted shortly with further details regarding your online consultation. If you have any urgent questions or concerns, please feel free to contact us.</p>
+
+        <div class="contact-info">
+            <p>Email: <a href="mailto:info@ZenCareHealthCenter.com">info@ZenCareHealthCenter.com</a></p>
+            <p>Phone: <a href="tel:1800800800">1800 800 800</a></p>
+        </div>
+
+        <footer>
+            <p>Best Regards,<br>ZenCare Health Center</p>
+            <img src="ZenCare_Health_Center_logos_transparent.jpg" alt="Hospital Logo" class="footer-logo">
+        </footer>
+    </div>
+
+</body>
+
+</html>

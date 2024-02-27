@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Home Page{% endblock %}</title>
+    
+    {% load static %}
+    <link rel="shortcut icon" href={% static 'ZenCare_Health_Center_logos_transparent.jpg' %} type="image/x-icon">
+
+    {% comment %} Google Fonts {% endcomment %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Headland+One&family=Noto+Sans:wdth,wght@93.8,750;100,537;100,767&family=Open+Sans:ital,wght@0,307;1,400&family=Roboto:wght@300&family=Rubik:wght@399&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bacasime+Antique&family=Hedvig+Letters+Serif:opsz@12..24&family=Kalnia:wght@100..700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bacasime+Antique&family=DM+Serif+Display:ital@0;1&family=Hedvig+Letters+Serif:opsz@12..24&family=Kalnia:wght@100..700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+
+    <style>
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        a{
+            text-decoration: none;
+            color : white;
+        }
+        
+        {% comment %} .abc{
+            width: 100vw;
+            height: 65px;
+ 
+        } {% endcomment %}
+
+        .navbar_continer {
+            background-color: #246bad;
+            height: 65px;
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            {% comment %} position: fixed;
+            z-index: 100;
+            width: 100vw; {% endcomment %}
+        }
+
+
+        .navbar_name {
+            width: 50px;
+            margin: 5px;
+            padding: 5px;
+            font-family: 'Headland One', serif;
+            align-self: center;
+            display:flex;
+            justify-content:center;
+            align-items: center;
+        }
+        .navbar_name > img{
+            height:50px;
+            width:50px;
+        }
+        .nav_navigations {
+            width: 600px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .nav_navigations > ul {
+            width: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        .nav_appointment_button {
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative; 
+        }
+
+        .nav_appointment_button > button {
+            width: 150px;
+            height: 40px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: white;
+            color: #246bad;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 200px;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            top: 100%; /* Adjust the distance from the button */
+            left: 0; /* Align the dropdown with the button */
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .nav_appointment_button:hover .dropdown-content {
+            display: block;
+        }
+
+        {% block style %}
+
+        {% endblock %}
+    </style>
+</head>
+
+<body>
+    <div class="abc">
+    <div class="navbar_continer">
+        <div class="navbar_name">
+            {% load static %}
+            <img src={% static 'ZenCare_Health_Center_logos_transparent.jpg' %}>
+            <h1><a href="/homePage">ZHC</a></h1>
+        </div>
+
+        <div class="nav_navigations">
+            <ul>
+                <li><a href="/homePage">Home</a></li>
+                <li><a href="/blog/all-blogs/">Blogs</a></li>
+                <li><a href="/doctor/doc-list/">Doctors</a></li>
+                <li><a href="/about-us">Who we are ?</a></li>
+            </ul>
+        </div>
+
+        <div class="nav_appointment_button">
+            <button>Are you a Doctor ?</button>
+            <div class="dropdown-content">
+                <a href="/doctor/doc-reg/">Register as Doctor</a>
+                <a href="/doctor/doc-login">Your Patient Info</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% block content %}{% endblock %}
+
+    <div class="footer">
+        {% comment %} <p> <b> &copy; All Rights are Reserved by Anish Roy </b></p> {% endcomment %}
+    </div>
+</body>
+
+</html>
