@@ -24,18 +24,6 @@ firebaseConfig = {
     "appId": os.getenv("FIREBASE_APP_ID"),
     "measurementId": os.getenv("FIREBASE_MEASUREMENT_ID"),
     "databaseURL": os.getenv("FIREBASE_DATABASE_URL")  
-
-# Pyrebase Authentication
-firebaseConfig = {
-  "apiKey": "AIzaSyA81y_aBfgggpkJBLvLWZjr9NqAQMg0d_U",
-  "authDomain": "hospital-management-13dbb.firebaseapp.com",
-  "databaseURL": "https://hospital-management-13dbb-default-rtdb.firebaseio.com",
-  "projectId": "hospital-management-13dbb",
-  "storageBucket": "hospital-management-13dbb.appspot.com",
-  "messagingSenderId": "884809096216",
-  "appId": "1:884809096216:web:9e37288095f205c499b76d",
-  "measurementId": "G-ZPQQ1FCFP9",
-  "databaseURL" : "https://hospital-management-13dbb-default-rtdb.firebaseio.com/"
 }
 
 firebase = pyrebase.initialize_app(firebaseConfig)     
