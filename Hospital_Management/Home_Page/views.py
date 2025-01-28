@@ -6,6 +6,12 @@ from email.mime.multipart import MIMEMultipart
 import jinja2
 from jinja2 import Environment, FileSystemLoader
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
 # Create your views here.
 
 def home(request):
@@ -16,9 +22,11 @@ def home(request):
     
     if patient_name:
         smtpObject = s.SMTP("smtp.gmail.com", 587)
-        From = "aroy262692@gmail.com"
-        Password = "byul izrf kzlj qlib"
+        From = os.getenv('EMAIL_ID')
+        Password = os.getenv('EMAIL_KEY')
 
+        print(From, Password)
+        
         smtpObject.starttls()
         smtpObject.login(From, Password)
 
